@@ -56,7 +56,25 @@ A dynamic and interactive web-based **Silent Auction Application** built with **
    conda activate sa_env
    ```
 
-   Using `pip`:
+   Using `venv`:
+
+   ```bash
+   python -m venv sa_env
+   ```
+
+   - On macOS/Linux:
+
+   ```bash
+   source sa_env/bin/activate
+   ```
+
+   - On Windows:
+
+   ```bash
+   sa_env\Scripts\activate
+   ```
+
+   - Confirm activation: The prompt will change to show the virtual environment's name  (sa_env)
 
    ```bash
    pip install -r requirements.txt
