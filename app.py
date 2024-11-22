@@ -62,5 +62,4 @@ def place_bid():
     emit('new_bid', {'item_id': data['item_id'], 'current_highest_bid': data['bid_amount']}, broadcast=True)
 
 if __name__ == '__main__':
-    db.create_all()
-    socketio.run(app)
+    socketio.run(app, debug=True)
