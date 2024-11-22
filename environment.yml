@@ -1,0 +1,17 @@
+name: silent-auction
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - flask=3.1.0
+  - flask-mail=0.9.1
+  - flask-migrate=4.0.7
+  - flask-socketio=5.4.1
+  - flask-sqlalchemy=3.1.1
+  - gunicorn=23.0.0
+  - pip=24.3.1
+  - python=3.13.0
+  - pip:
+      - flask-cors==5.0.0
+      - flask-jwt-extended==4.7.1
+      - pyjwt==2.10.0
