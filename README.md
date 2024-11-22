@@ -129,8 +129,8 @@ Contributions are welcome! Please follow these steps:
 
 ## **Contact**
 For questions or feedback, please contact:
-- **Email**: your-email@example.com
-- **GitHub**: [your-username](https://github.com/your-username)
+- **Email**: gareytwin1@gmail.com
+- **GitHub**: [gareytwin1](https://github.com/gareytwin1)
 
 ---
 
