@@ -51,12 +51,6 @@ A dynamic and interactive web-based **Silent Auction Application** built with **
    conda activate flask_env
    ```
 
-   Or using `venv`:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
 3. **Install Dependencies**:
    ```bash
    pip install -r requirements.txt
@@ -146,8 +140,3 @@ For questions or feedback, please contact:
 - **Mobile Optimization**: Ensure the application works flawlessly on mobile devices.
 
 ---
-
-Let me know if you’d like to customize any section or add more details! 
-
-**a.** Would you like me to include project badges (e.g., build status, license)?  
-**b.** Should I provide a sample screenshot or GIF demo of the application for the `README.md`?
