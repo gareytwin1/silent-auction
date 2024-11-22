@@ -40,20 +40,15 @@ A dynamic and interactive web-based **Silent Auction Application** built with **
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/silent-auction.git
+   git clone https://github.com/gareytwin1/silent-auction.git
    cd silent-auction
    ```
 
 2. **Create a Virtual Environment**:
    Using `conda`:
    ```bash
-   conda create -n flask_env python=3.9
-   conda activate flask_env
-   ```
-
-3. **Install Dependencies**:
-   ```bash
-   pip install -r requirements.txt
+   conda create -n sa_env < environment.yml
+   conda activate sa_env
    ```
 
 4. **Set Up the Database**:
