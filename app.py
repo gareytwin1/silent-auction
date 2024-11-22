@@ -44,6 +44,7 @@ def register():
     data = request.json
     # Logic to register user (e.g., hashing password)
 
+
 @app.route('/login', methods=['POST'])
 def login():
     data = request.json
@@ -59,7 +60,13 @@ def place_bid():
     data = request.json
     # Validate bid and notify via WebSocket
     # Emit new bid to all clients
-    emit('new_bid', {'item_id': data['item_id'], 'current_highest_bid': data['bid_amount']}, broadcast=True)
+    socketio.emit('new_bid', {
+        'item_id': data['item_id'], 
+        'current_highest_bid': data['bid_amount']
+    }, namespace='/')
+    
+    # Return a response
+    return jsonify({'status': 'success', 'message': 'Bid placed successfully'}), 200
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
