@@ -1,0 +1,13 @@
+Flask
+Flask-Cors==5.0.0
+Flask-JWT-Extended==4.7.1
+Flask-Mail==0.9.1
+Flask-Migrate 
+Flask-SocketIO==5.1.1
+Flask-SQLAlchemy==2.5.1
+Flask-WTF==0.15.1
+gunicorn==20.1.0
+PyJWT==2.10.0
+python-engineio==4.2.0
+python-socketio==5.3.0
+SQLAlchemy==1.4.22
