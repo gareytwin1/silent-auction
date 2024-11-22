@@ -58,12 +58,15 @@ def get_items():
 @app.route('/bids', methods=['POST'])
 def place_bid():
     data = request.json
+    user_id = data['user_id']
+    item_id = data['item_id']
+    bid_amount = data['bid_amount']
     # Validate bid and notify via WebSocket
     # Emit new bid to all clients
     socketio.emit('new_bid', {
-        'item_id': data['item_id'], 
-        'current_highest_bid': data['bid_amount']
-    }, namespace='/')
+        'item_id': user_id, 
+        'current_highest_bid': bid_amount
+    }, to='/')
     
     # Return a response
     return jsonify({'status': 'success', 'message': 'Bid placed successfully'}), 200
