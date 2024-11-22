@@ -47,7 +47,7 @@ A dynamic and interactive web-based **Silent Auction Application** built with **
 2. **Create a Virtual Environment**:
    Using `conda`:
    ```bash
-   conda create -n sa_env < environment.yml
+   conda env create -f environment.yml
    conda activate sa_env
    ```
 
