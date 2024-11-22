@@ -40,26 +40,15 @@ A dynamic and interactive web-based **Silent Auction Application** built with **
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/silent-auction.git
+   git clone https://github.com/gareytwin1/silent-auction.git
    cd silent-auction
    ```
 
 2. **Create a Virtual Environment**:
    Using `conda`:
    ```bash
-   conda create -n flask_env python=3.9
-   conda activate flask_env
-   ```
-
-   Or using `venv`:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. **Install Dependencies**:
-   ```bash
-   pip install -r requirements.txt
+   conda env create -f environment.yml
+   conda activate sa_env
    ```
 
 4. **Set Up the Database**:
@@ -135,8 +124,8 @@ Contributions are welcome! Please follow these steps:
 
 ## **Contact**
 For questions or feedback, please contact:
-- **Email**: your-email@example.com
-- **GitHub**: [your-username](https://github.com/your-username)
+- **Email**: gareytwin1@gmail.com
+- **GitHub**: [gareytwin1](https://github.com/gareytwin1)
 
 ---
 
@@ -146,8 +135,3 @@ For questions or feedback, please contact:
 - **Mobile Optimization**: Ensure the application works flawlessly on mobile devices.
 
 ---
-
-Let me know if you’d like to customize any section or add more details! 
-
-**a.** Would you like me to include project badges (e.g., build status, license)?  
-**b.** Should I provide a sample screenshot or GIF demo of the application for the `README.md`?
