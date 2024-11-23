@@ -1,10 +1,10 @@
 # app.py
 import os
-from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
-from flask_socketio import SocketIO, emit
 from datetime import datetime
-from flask_jwt_extended import JWTManager, create_access_token
+from flask import Flask, request, jsonify
+from flask_sqlalchemy import SQLAlchemy # type: ignore
+from flask_socketio import SocketIO, emit # type: ignore
+from flask_jwt_extended import JWTManager, create_access_token # type: ignore
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///auction.db'
