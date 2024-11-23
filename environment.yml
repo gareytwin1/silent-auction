@@ -8,7 +8,6 @@ dependencies:
   - flask-migrate
   - flask-socketio
   - flask-sqlalchemy
-  - gunicorn
   - pip
   - python
   - pip:
