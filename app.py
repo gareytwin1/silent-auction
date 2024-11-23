@@ -8,7 +8,7 @@ from flask_jwt_extended import JWTManager, create_access_token # type: ignore
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///auction.db'
-app.config['SA_SECRET_KEY'] = os.getenv('SA_SECRET_KEY')
+app.config['SA_SECRET_KEY'] = 'dev' #'os.getenv('SA_SECRET_KEY')'
 
 db = SQLAlchemy(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
