@@ -55,6 +55,7 @@ def get_items():
     items = Item.query.filter_by(is_active=True).all()
     return jsonify([item.to_dict() for item in items])
 
+# WebSocket
 @app.route('/bids', methods=['POST'])
 def place_bid():
     data = request.json
