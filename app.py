@@ -72,6 +72,29 @@ def place_bid():
     # Return a response
     return jsonify({'status': 'success', 'message': 'Bid placed successfully'}), 200
 
+# Handle connection
+@socketio.on("connect")
+def handle_connect():
+    print("Client connected")
+    emit("server_message", {"message": "Welcome to the server!"})
+
+# Handle disconnection
+@socketio.on("disconnect")
+def handle_disconnect():
+    print("Client disconnected")
+
+# Custom Event: Custom Message
+@socketio.on("custom_event")
+def handle_custom_event(data):
+    print(f"Custom event received: {data}")
+    emit("custom_event_response", {"message": f"Server received your custom event: {data}"})
+
+# Custom Event: Broadcast to All Clients
+@socketio.on("broadcast_event")
+def handle_broadcast_event(data):
+    print(f"Broadcasting: {data}")
+    socketio.emit("broadcast_response", {"message": data}, broadcast=True)
+
 @socketio.on("message")
 def handle_message(message):
     print("Received message:", message)
