@@ -1,16 +1,16 @@
 # app.py
 import os
-from datetime import datetime
 from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy # type: ignore
 from flask_socketio import SocketIO, emit # type: ignore
 from flask_jwt_extended import JWTManager, create_access_token # type: ignore
+from models import db, User, Item, Bid
+from datetime import datetime
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///auction.db'
 app.config['SA_SECRET_KEY'] = 'dev' #'os.getenv('SA_SECRET_KEY')'
 
-db = SQLAlchemy(app)
+db.init_app(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 jwt = JWTManager(app)
 
@@ -20,7 +20,6 @@ jwt = JWTManager(app)
 def register():
     data = request.json
     # Logic to register user (e.g., hashing password)
-
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -32,22 +31,38 @@ def get_items():
     items = Item.query.filter_by(is_active=True).all()
     return jsonify([item.to_dict() for item in items])
 
-# WebSocket
 @app.route('/bids', methods=['POST'])
 def place_bid():
     data = request.json
-    user_id = data['user_id']
-    item_id = data['item_id']
-    bid_amount = data['bid_amount']
-    # Validate bid and notify via WebSocket
-    # Emit new bid to all clients
+    user_id = data.get('user_id')
+    item_id = data.get('item_id')
+    bid_amount = data.get('bid_amount')
+
+    # Validate the bid
+    item = Item.query.get(item_id)
+    if not item:
+        return jsonify({'error': 'Item not found'}), 404
+    if bid_amount <= item.current_highest_bid:
+        return jsonify({'error': 'Bid amount must be higher than the current bid'}), 400
+
+    # Update the item's highest bid
+    item.current_highest_bid = bid_amount
+    item.winner_id = user_id
+    db.session.commit()
+
+    # Save the bid to the database
+    new_bid = Bid(user_id=user_id, item_id=item_id, bid_amount=bid_amount)
+    db.session.add(new_bid)
+    db.session.commit()
+
+    # Emit the new bid event
     socketio.emit('new_bid', {
-        'item_id': user_id, 
-        'current_highest_bid': bid_amount
-    }, to='/')
-    
-    # Return a response
-    return jsonify({'status': 'success', 'message': 'Bid placed successfully'}), 200
+        'item_id': item.id,
+        'current_highest_bid': item.current_highest_bid,
+        'winner_id': item.winner_id
+    }, to=None)
+
+    return jsonify({'message': 'Bid placed successfully!'})
 
 # Handle connection
 @socketio.on("connect")
