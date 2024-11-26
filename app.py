@@ -14,7 +14,6 @@ db.init_app(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 jwt = JWTManager(app)
 
-
 # Routes
 @app.route('/register', methods=['POST'])
 def register():
@@ -39,7 +38,7 @@ def place_bid():
     bid_amount = data.get('bid_amount')
 
     # Validate the bid
-    item = Item.query.get(item_id)
+    item = db.session.get(Item, item_id)
     if not item:
         return jsonify({'error': 'Item not found'}), 404
     if bid_amount <= item.current_highest_bid:
