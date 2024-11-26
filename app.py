@@ -93,7 +93,9 @@ def handle_custom_event(data):
 @socketio.on("broadcast_event")
 def handle_broadcast_event(data):
     print(f"Broadcasting: {data}")
-    socketio.emit("broadcast_response", {"message": data}, broadcast=True)
+    # Emit to all connected clients
+    socketio.emit("broadcast_response", {"message": data}, to=None)
+
 
 @socketio.on("message")
 def handle_message(message):
