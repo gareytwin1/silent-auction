@@ -72,5 +72,10 @@ def place_bid():
     # Return a response
     return jsonify({'status': 'success', 'message': 'Bid placed successfully'}), 200
 
+@socketio.on("message")
+def handle_message(message):
+    print("Received message:", message)
+    socketio.send({"response": f"Server received: {message}"})
+
 if __name__ == '__main__':
     socketio.run(app, debug=True)
