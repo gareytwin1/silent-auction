@@ -97,7 +97,6 @@ A dynamic and interactive web-based **Silent Auction Application** built with **
 
 ---
 
-
 ## **License**
 
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
@@ -130,5 +129,3 @@ For questions or feedback, please contact:
 - **Payment Integration**: Add payment gateways for seamless transactions.
 - **Analytics Dashboard**: Provide real-time statistics for admins.
 - **Mobile Optimization**: Ensure the application works flawlessly on mobile devices.
-
----
